@@ -69,6 +69,33 @@
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript">
+    
+        function playexplosion() {
+        if (flag==0) {
+            document.getElementById("red_text").style.color = "red";
+            document.getElementById("red_text").style.fontWeight = "bold";
+            /*document.getElementById("green_text").style.color = "green";
+            document.getElementById("green_text").style.fontWeight = "bold";
+            document.getElementById("blue_text").style.color = "blue";
+            document.getElementById("blue_text").style.fontWeight = "bold";
+            document.getElementById("yellow_text").style.color = "yellow";
+            document.getElementById("yellow_text").style.fontWeight = "bold";
+            document.getElementById("orange_text").style.color = "orange";
+            document.getElementById("orange_text").style.fontWeight = "bold";
+            document.getElementById("black_text").style.color = "black";
+            document.getElementById("black_text").style.fontWeight = "bold";
+            document.getElementById("white_text").style.color = "white";
+            document.getElementById("white_text").style.fontWeight = "bold";
+            document.getElementById("purple_text").style.color = "purple";
+            document.getElementById("purple_text").style.fontWeight = "bold";*/
+            var audio = document.getElementById("explosion");
+            audio.volume=0.5;
+            audio.play();
+            flag=1;
+        }
+    }
+
+    
     app.initialize();
     setTimeout(function() {
         app.startBannerAds();
