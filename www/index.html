@@ -14,14 +14,10 @@
 
 <body onresize="app.onResize()">
   <div id="fullpage" class="app">
-  -    <h1>appFeel AdMob Cordova Plugin</h1>
  -      <div id="progressDialog" class="progressDialog hidden">
  - -      <div id="spinner"></div>
  - -      <span id="message">Loading ads...</span>
  - -    </div>
- - -    <p>
- - -      <a class="button" onclick="app.startBannerAds()">Start Banner Ads</a>
- - -    </p>
  -
  -    
  </div>
@@ -30,9 +26,9 @@
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript">
     app.initialize();
-    //setTimeout(function() {
-    //    app.startBannerAds();
-    //}, 1000); 
+    setTimeout(function() {
+        app.startBannerAds();
+    }, 1000); 
   </script>
 </body>
 
