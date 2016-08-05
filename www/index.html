@@ -10,6 +10,41 @@
   <link rel="stylesheet" type="text/css" href="css/index.css" />
   <meta name="msapplication-tap-highlight" content="no" />
   <title>AdMob Ads Demo</title>
+            <style type="text/css">
+                body {
+                    overflow: hidden;
+                }
+            
+                .page {
+                    position: absolute;
+                    padding: 12px;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            
+            .page.left {
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+            }
+            
+            .page.center {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            
+            .page.right {
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0);
+            }
+            
+            .page.transition {
+                -webkit-transition-duration: .25s;
+                transition-duration: .25s;
+            }
+            
+                </style>
 </head>
 
 <body onresize="app.onResize()">
@@ -63,11 +98,106 @@
                     }
                     </style>
                 
-                <h1 id="red_text"> Red </h1>
+                <h1 id="red_text" href="javascript:playexplosion()"> Red </h1>
                 
-                <a id="linktop" href="javascript:playexplosion()"></a>
+                <!--<a id="linktop" href="javascript:playexplosion()"></a>-->
         </div>
 
+        <div id="c2_green" class="page right" style="background-color: #CCFFCC">
+            <style type="text/css">
+                img {
+                    /*Page 1*/
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 200px;
+                    height: 200px;
+                    margin-top: -100px; /* Half the height */
+                    margin-left: -100px; /* Half the width */
+                }
+            </style>
+            <img src="data/Green.jpg" alt="Green">
+                
+                <style type="text/css">
+                    h1 {
+                        font-size:80px;
+                        font-weight:normal;
+                        margin:0px;
+                        overflow:visible;
+                        padding:0px;
+                        text-align:center;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 400px;
+                        height: 400px;
+                        margin-top: -300px; /* Half the height */
+                        margin-left: -200px; /* Half the width */
+                    }
+                 #linktop {
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 15%;
+                    margin-left: 0%; /* Half the width */
+                    margin-top: 0%;
+                }
+                    html, body {
+                        height: 100%; /* or the height property above will not work */
+                        margin: 0; /* to avoid scrollbars */
+                        padding: 0;
+                        overflow-x: hidden;
+                    }
+                body {
+                    position: relative
+                }
+                </style>
+                
+                <h1 id="green_text" href="javascript:playexplosion()"> Green </h1>
+                
+                <!--<a id="linktop" href="javascript:playexplosion()"></a>-->
+
+        </div>
+
+    <script src="js/hammer.min.js"></script>
+    <script>
+            
+            var homePage = document.getElementById("homePage");
+            var page2 = document.getElementById("c2_green");
+
+            currentPage = homePage;
+            var flag=0;
+            
+            var hammertime1 = new Hammer(homePage);
+            var hammertime2 = new Hammer(page2);
+
+            hammertime1.on("swipeleft", function(ev) {
+                            slidePageFrom(page2, 'right');
+                            console.log(ev);
+                           });
+            /*hammertime1.on("swiperight", function(ev) {
+                            slidePageFrom2(page3, 'left');
+                            console.log(ev);
+                           });*/
+            hammertime2.on("swiperight", function(ev) {
+                            slidePageFrom(homePage, 'left');
+                            console.log(ev);
+                           });
+
+            
+            function slidePageFrom(page, from) {
+                // Position the page at the starting position of the animation
+                page.className = "page " + from;
+                // Position the new page and the current page at the ending position of their animation with a transition class indicating the duration of the animation
+                page.className ="page transition center";
+                currentPage.className = "page transition " + (from === "left" ? "right" : "left");
+                currentPage = page;
+                flag=0;
+                document.getElementById("red_text").style.color = "black";
+                document.getElementById("red_text").style.fontWeight = "normal";
+                document.getElementById("green_text").style.color = "black";
+                document.getElementById("green_text").style.fontWeight = "normal";
+            }
 
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
@@ -78,20 +208,6 @@
         if (flag==0) {
             document.getElementById("red_text").style.color = "red";
             document.getElementById("red_text").style.fontWeight = "bold";
-            /*document.getElementById("green_text").style.color = "green";
-            document.getElementById("green_text").style.fontWeight = "bold";
-            document.getElementById("blue_text").style.color = "blue";
-            document.getElementById("blue_text").style.fontWeight = "bold";
-            document.getElementById("yellow_text").style.color = "yellow";
-            document.getElementById("yellow_text").style.fontWeight = "bold";
-            document.getElementById("orange_text").style.color = "orange";
-            document.getElementById("orange_text").style.fontWeight = "bold";
-            document.getElementById("black_text").style.color = "black";
-            document.getElementById("black_text").style.fontWeight = "bold";
-            document.getElementById("white_text").style.color = "white";
-            document.getElementById("white_text").style.fontWeight = "bold";
-            document.getElementById("purple_text").style.color = "purple";
-            document.getElementById("purple_text").style.fontWeight = "bold";*/
             var audio = document.getElementById("explosion");
             audio.volume=0.5;
             audio.play();
