@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="css/index.css" />
   <meta name="msapplication-tap-highlight" content="no" />
   <title>AdMob Ads Demo</title>
- <!--           <style type="text/css">
+            <style type="text/css">
                 .page {
                     position: absolute;
                     padding: 12px;
@@ -40,7 +40,7 @@
                 transition-duration: .25s;
             }
             
-                </style> -->
+                </style> 
 </head>
 
 <body onresize="app.onResize()">
@@ -151,9 +151,9 @@
                 }
                 </style>
                 
-                <h1 id="green_text" href="javascript:playexplosion()"> Green </h1>
+                <h1 id="green_text" > Green </h1>
                 
-                <!--<a id="linktop" href="javascript:playexplosion()"></a>-->
+                <a id="linktop" href="javascript:playexplosion()"></a>
 
         </div>
 
@@ -173,10 +173,7 @@
                             slidePageFrom(page2, 'right');
                             console.log(ev);
                            });
-            /*hammertime1.on("swiperight", function(ev) {
-                            slidePageFrom2(page3, 'left');
-                            console.log(ev);
-                           });*/
+            
             hammertime2.on("swiperight", function(ev) {
                             slidePageFrom(homePage, 'left');
                             console.log(ev);
